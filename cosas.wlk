@@ -1,3 +1,5 @@
+import casa.*
+
 object electrodomestico{
 }
 
@@ -32,3 +34,8 @@ object plancha {
 	method precio() { return 1200 }
 	method categoria() { return electrodomestico }
 }
+
+/*
+20000
+ 1200
+*/

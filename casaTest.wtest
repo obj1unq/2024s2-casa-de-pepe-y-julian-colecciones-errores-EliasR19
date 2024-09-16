@@ -1,0 +1,50 @@
+import casa.*
+import cosas.*
+
+describe "Test Ejemplos"{
+    test"1"{
+        
+    }
+}
+
+
+
+
+
+describe "Test"{
+    test "cosa más cara"{
+        casaDePepeYJulian.comprar(heladera)
+        casaDePepeYJulian.comprar(plancha)
+        assert.equals(heladera, casaDePepeYJulian.compraMasCara())
+    }
+    test"Total"{
+        casaDePepeYJulian.comprar(heladera)
+        casaDePepeYJulian.comprar(plancha)
+        assert.equals(21200, casaDePepeYJulian.precioTotalDeCosas())
+    }
+
+    test"cosa Comprada categoria"{
+        casaDePepeYJulian.comprar(heladera)
+        casaDePepeYJulian.comprar(plancha)
+        casaDePepeYJulian.comprar(tiraDeAsado)
+        assert.equals([tiraDeAsado], casaDePepeYJulian.comprados(comida) )
+    }
+    test"faltan"{
+        casaDePepeYJulian.comprar(plancha)
+        casaDePepeYJulian.comprar(tiraDeAsado)
+        assert.equals([heladera], casaDePepeYJulian.queFaltaComprar([plancha, tiraDeAsado, heladera]))
+
+    }
+    test "comdias"{
+        casaDePepeYJulian.comprar(plancha)
+        casaDePepeYJulian.comprar(tiraDeAsado)
+        assert.that(casaDePepeYJulian.faltaComida())
+    }
+    test"categorias"{
+        casaDePepeYJulian.comprar(plancha)
+        casaDePepeYJulian.comprar(tiraDeAsado)
+        casaDePepeYJulian.comprar(cama)
+        casaDePepeYJulian.comprar(heladera)
+        assert.equals(#{electrodomestico, comida, mueble}, casaDePepeYJulian.categoriasCompradas())
+    }
+}
