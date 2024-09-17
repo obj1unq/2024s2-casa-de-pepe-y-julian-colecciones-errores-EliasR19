@@ -13,11 +13,11 @@ object corriente{
     }
 
     method extraer(cantidad){
-        //self.validarExtraccion(cantidad) // si esta se da, la proxima línea no se lee, se corta
+        self.validarExtraccion(cantidad) // si esta se da, la proxima línea no se lee, se corta
         saldo = saldo - cantidad
     }
     method validarExtraccion(cantidad){
-        if(cantidad < saldo){
+        if(cantidad > saldo){
             self.error("Saldo " + saldo + " insuficiente para comprar algo de " + cantidad)
         }
     }
