@@ -1,13 +1,16 @@
 import cosas.* 
+import cuentaBancaria.*
 
 object casaDePepeYJulian {
 	const cosas = []
+	var property cuenta = corriente
 
 	method cosas(){
 		return cosas
 	}
 	
 	method comprar(cosa){
+		cuenta.extraer(cosa.precio())
 		cosas.add(cosa)
 	}
 

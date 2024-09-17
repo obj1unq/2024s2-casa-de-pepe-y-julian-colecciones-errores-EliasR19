@@ -13,7 +13,13 @@ object corriente{
     }
 
     method extraer(cantidad){
+        self.validarExtraccion(cantidad) // si esta se da, la proxima línea no se lee, se corta
         saldo = saldo - cantidad
+    }
+    method validarExtraccion(cantidad){
+        if(cantidad < saldo){
+            self.error("Saldo " + saldo + " insuficiente para comprar algo de " + cantidad)
+        }
     }
 }
 
@@ -46,7 +52,7 @@ object combinada{
     }
 
     method extraer(cantidad){
-        const cuenta = if(primaria.saldo() >= cantidad ) primario else secundaria
+        const cuenta = if(primaria.saldo() >= cantidad ) primaria else secundaria
         cuenta.extraer(cantidad)
     }
 }
