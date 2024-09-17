@@ -1,0 +1,31 @@
+import cosas.*
+import casa.*
+import cuentaBancaria.*
+
+describe"Test Cuentas Bancarias"{
+    test"Prueba 1 cuanta con gastos"{
+        conGastos.depositar(1000)
+        assert.equals(980, conGastos.saldo())
+    }
+
+    test"cuenta Combinada sin excepcion"{
+        combinada.primaria(conGastos)
+        conGastos.operacion(50)
+
+        combinada.secundaria(corriente)
+        corriente.depositar(500)
+
+        combinada.depositar(100)
+        assert.equals(50, conGastos.saldo())
+
+        combinada.extraer(200)
+        assert.equals(300, corriente.saldo())
+
+        assert.equals(350, combinada.saldo())
+
+    }
+
+    test"cuenta con Excepcion"{
+        
+    }
+}
