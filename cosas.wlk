@@ -1,13 +1,21 @@
 import casa.*
 
 object electrodomestico{
+	/* 001 method esComestible{
+			return false
+	}*/
 }
 
 object mueble {
+	/* 001 method esComestible{
+			return false
+	}*/
 }
 
 object comida {
-
+	/* 001 method esComestible{
+			return true
+	}*/
 }
 
 object heladera {

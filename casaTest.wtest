@@ -3,7 +3,24 @@ import cosas.*
 
 describe "Test Ejemplos"{
     test"1"{
-        
+    casaDePepeYJulian.comprar(heladera)
+    casaDePepeYJulian.comprar(cama)
+    casaDePepeYJulian.comprar(plancha)   
+    assert.equals([heladera, cama, plancha], casaDePepeYJulian.cosas())
+    assert.that(casaDePepeYJulian.tieneAlgun(electrodomestico))
+    assert.that(casaDePepeYJulian.tieneAlgun(mueble))
+    assert.notThat(casaDePepeYJulian.tieneAlgun(comida))
+    assert.that(casaDePepeYJulian.vieneDeComprar(electrodomestico))
+    assert.notThat(casaDePepeYJulian.vieneDeComprar(comida))
+
+    assert.that(casaDePepeYJulian.esDerrochador())
+    assert.equals([heladera, plancha], casaDePepeYJulian.comprados(electrodomestico))
+    assert.equals([cama], casaDePepeYJulian.comprados(mueble))
+    assert.notThat(casaDePepeYJulian.tieneAlgun(comida))
+    assert.equals([tiraDeAsado, paqueteDeFideos], casaDePepeYJulian.queFaltaComprar([tiraDeAsado, plancha, paqueteDeFideos]))
+    assert.that(casaDePepeYJulian.faltaComida())
+    assert.equals(#{electrodomestico, mueble}, casaDePepeYJulian.categoriasCompradas())
+
     }
 }
 

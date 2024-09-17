@@ -3,6 +3,10 @@ import cosas.*
 object casaDePepeYJulian {
 	const cosas = []
 
+	method cosas(){
+		return cosas
+	}
+	
 	method comprar(cosa){
 		cosas.add(cosa)
 	}
@@ -39,16 +43,19 @@ object casaDePepeYJulian {
 
 	method malaEpoca(){
 		return cosas.all( { cosa => cosa.categoria() == comida})
+		// 001 return cosas.all( cosa=> cosa.categoria().esComestible() })
+		
+
 	}
 	// mala practica hacer comparacion con objeto usando objeto global
 
 	method queFaltaComprar(lista){
 
-		return lista.filter( { cosa => self.estaComprado(cosa)} )
+		return lista.filter( { cosa => !self.estaComprado(cosa)} )
 		
 	}
 	method estaComprado(cosa){
-		return !cosas.contains(cosa)
+		return cosas.contains(cosa)
 	}
 
 	method faltaComida(){
