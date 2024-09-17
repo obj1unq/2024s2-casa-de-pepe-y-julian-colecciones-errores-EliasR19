@@ -1,0 +1,61 @@
+import cosas.*
+import casa.*
+import cuentaBancaria.*
+
+describe"Test Cuentas Bancarias"{
+    test"Prueba 1 cuanta con gastos"{
+        conGastos.depositar(1000)
+        assert.equals(980, conGastos.saldo())
+    }
+
+    test"cuenta Combinada sin excepcion"{
+        combinada.primaria(conGastos)
+        conGastos.operacion(50)
+
+        combinada.secundaria(corriente)
+        corriente.depositar(500)
+
+        combinada.depositar(100)
+        assert.equals(50, conGastos.saldo())
+
+        combinada.extraer(200)
+        assert.equals(300, corriente.saldo())
+
+        assert.equals(350, combinada.saldo())
+
+    }
+
+    test"cuenta con Excepcion Primera Etapa"{
+        casaDePepeYJulian.cuenta(corriente)
+        corriente.depositar(1000)
+        casaDePepeYJulian.comprar(tiraDeAsado)
+        casaDePepeYJulian.comprar(paqueteDeFideos)
+        assert.equals(600, corriente.saldo())
+        
+        }
+}
+
+describe "Cuenta Bancaria Segunda Etapa"{
+    test" puede sacar menos de lo que tiene"{
+        corriente.depositar(1000)
+        assert.doesNotThrowException({ corriente.extraer(900)})
+    }
+    test" no puede sacar mas de lo que tiene"{
+        corriente.depositar(1000)
+        assert.throwsException({corriente.extraer(1200)})
+    }
+    test "casa puede comprar y se le resta"{
+        casaDePepeYJulian.cuenta(corriente)
+        corriente.depositar(1000)
+        assert.doesNotThrowException({ casaDePepeYJulian.comprar(tiraDeAsado) })
+        assert.equals([tiraDeAsado], casaDePepeYJulian.cosas())
+        assert.equals(650, corriente.saldo())
+    }
+    test"no puede comprar y avisa"{
+        casaDePepeYJulian.cuenta(corriente)
+        corriente.depositar(1000)
+        assert.throwsException({ casaDePepeYJulian.comprar(plancha)})
+        assert.equals([],casaDePepeYJulian.cosas())
+        assert.equals(1000, corriente.saldo())
+    }
+}

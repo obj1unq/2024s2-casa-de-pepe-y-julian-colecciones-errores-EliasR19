@@ -1,11 +1,21 @@
+import casa.*
+
 object electrodomestico{
+	/* 001 method esComestible{
+			return false
+	}*/
 }
 
 object mueble {
+	/* 001 method esComestible{
+			return false
+	}*/
 }
 
 object comida {
-
+	/* 001 method esComestible{
+			return true
+	}*/
 }
 
 object heladera {
@@ -32,3 +42,8 @@ object plancha {
 	method precio() { return 1200 }
 	method categoria() { return electrodomestico }
 }
+
+/*
+20000
+ 1200
+*/
